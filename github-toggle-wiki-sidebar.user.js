@@ -64,14 +64,13 @@
 	}
 
 	function toggleSidebar(button) {
-		const sidebar = $(".wiki-rightbar");
+		const sidebar = $(".wiki-rightbar")?.parentNode;
 		const wrapper = sidebar?.parentNode;
 		if (sidebar && wrapper) {
 			const action = isHidden ? "remove" : "add";
 			button?.classList.toggle("selected", isHidden);
-			wrapper.style.display = isHidden ? "none" : "";
-			wrapper.classList[action]("has-rightbar");
-			wrapper.previousElementSibling?.classList[action]("col-md-9");
+			sidebar.style.display = isHidden ? "none" : "";
+			wrapper.classList[action]("Layout")
 			GM_setValue("sidebar-state", isHidden);
 		}
 	}
